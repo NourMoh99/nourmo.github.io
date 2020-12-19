@@ -25,7 +25,7 @@
 			class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
 			<div class="content">
 				<h1>Nour Mohamed's Portofolio</h1>
-				<p class="major">A showcase of my abilities in coding</a>.</p>
+				<p class="major">A showcase of my abilities using Python</a>.</p>
 				<ul class="actions stacked">
 					<li><a href="#first" class="button big wide smooth-scroll-middle">Get Started</a></li>
 				</ul>
@@ -39,15 +39,32 @@
 		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
 			id="first">
 			<div class="content">
-				<h2>The power of appending</h2>
-				<p># We start by creating an empty variable to append your converted values to.
-					</p># rt here is an array of reaction times of participants for one of the assignments I
-					worked on.
-					<p>rt_ms = [ ]
-					<p> # Write your loop below:
-						<p> for x in rt : 
-				<p> rt_ms.append(x * 1000)
-					</p> Here I managed to append or add all the values  ( x ) from the list rt, to another list, rt_mt, which includes all reaction times in milliseconds instead of seconds.
+				<h2>The power of appending and the for loop</h2>
+				<code>
+					IDs = ['s10', 's12', 's13', 's14', 's15']
+					
+					<p> The purpose of this question is to read in the files above in a for loop to find the mean reaction time for each partiant, in millisecond.
+				<p> We start by creating an empty variable to append your converted values to.
+					<p><code>val = [ ]</code>
+					<p> Write your loop below:
+						<p> <code>for ID in IDs : 
+						<p> filename = ID + '.csv'  </code>
+						<p> This line is necessary to turn every ID into filenames
+						<p> <code>val = pd.read_csv(filename)</code> 
+						<p> This line is used to read in every file.
+						<p> <code>val_rt_ms = [ ] </code> 
+						<p> This array will contain all reaction times in milliseconds.
+						<p> <code>for x in val['rt'] </code>   
+						<p> This for loop will be used to load all rt in millisecond into the empty array above.
+						<p> <code>val_rt_ms.append(x * 1000) </code> 
+						<p> This line is used to conevrts the values into milliseconds.
+						<p> <code>val['rt'] = val_rt_ms</code> 
+						<p> This line switches all columns in the original dataframe reaction time column into the millisecond values converted above.
+						<p> <code>congruent = val.loc[(val['flankers'] == 'congruent')]</code>  
+						<p> This lines attaches all the rows containing congruent data to the congruent array.
+						<p> <code>print ('The mean reaction time for the congruent trials is' + str(round(congruent['rt'].mean( ), 3)) + 'ms') </code>
+						<p> This line is used to round reaction time to 3 decimals and print a line which makes is easy to read the data for each participant. </p>
+						<p> <code> >Output = The mean reaction time for the congruent trials is 416.08 ms</code>
 
 				</ul>
 			</div>
@@ -61,20 +78,19 @@
 			<div class="content">
 				<h2>From an array to a dictionnary</h2>
 				<p> The following is a list of reaction times from assignment 2
-				<p>rt = ['0.39425281', '0.44209436', '0.53476437', '0.56590672']
+				<p><code>rt = ['0.39425281', '0.44209436', '0.53476437', '0.56590672']</code>
 				<p> The following is a list of names I created corresponding to the above reaction times:
-				<p> Participants = ['John', 'Connor', 'Mary', 'Sam'] 
+				<p> <code>Participants = ['John', 'Connor', 'Mary', 'Sam']</code>
 				<p> To create a dictionary which will be useful to acces the data easier, we create a dictionnary:
-				<p> Reactiontimes = {'John' : '0.39425281', 'Connor' : '0.44209436', 'Mary' : '0.53476437', 'Sam' : '0.56590672'}
+				<p> <code>Reactiontimes = {'John' : '0.39425281', 'Connor' : '0.44209436', 'Mary' : '0.53476437', 'Sam' : '0.56590672'}</code>
 				<p> To get the values of the reaction times of one of the participants we use the following code:
-				<p> print(Reactiontimes['John'])
-				<p></p> > Output: '0.39425281'
-				
+				<p> <code>print(Reactiontimes['John'])
+				<p> > Output: '0.39425281'</code>
+				<p> To take it a step further, a couple functions can be used to showcase the variability Python posses in dealing with dictionaries.
+				<p> <code>del(Reactiontimes['John']) </code>  
+				<p>This deleltes the key for the John and its value from the dictionary.
 
-				</p>
-				<ul class="actions stacked">
-					<li><a href="#" class="button">Learn More</a></li>
-				</ul>
+				
 			</div>
 			<div class="image">
 				<img src="images/spotlight02.jpg" alt="" />
@@ -84,26 +100,176 @@
 		<!-- Four -->
 		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
 			<div class="content">
-				<h2>Pharetra etiam nulla</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit
-					amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus,
-					pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-				<ul class="actions stacked">
-					<li><a href="#" class="button">Learn More</a></li>
-				</ul>
+				<h2>Pandas</h2>
+				<p> Pandas is a powerful tool, which can be used to easily manipulate data structures and analyze data.
+				<p> <code>import pandas as pd </code> 
+				<p> This line is used to import pandas 
+				<p> <code>dat= pd.read_csv('s10.csv')  </code>
+				<p> This line converts comma-separated-values (csv) into a pandas dataframe, which is way easier to use and manipulate as it put the data into table form.
+				<p> <code>dat.head() </code> 
+				<p> This function is used to view the beginning rows of the pandas DataFrame created
+					<img src="images/pd.head.jpg" alt="" />
+				<p> One of the main steps in being ablle to analyze data using Pandas, is cleaning the data:
+					<p> <code>df.isna().sum() </code>
+					<p> This gives us a summary of the missing values in each column
+					<p> <code>df.dropna()</code> 
+					<p> This is used to completely remove rows which contain missing values.
+						<p> <code>df = df[df.block != 'practice'] </code> 
+						<p> This line removes all practice trials from the table.
+					<p> Such pandas DataFrame can be used for various statisical analysis
+				<p> <code>dat['rt'][0:25].mean() </code>  
+				<p> Here I calculated the mean reaction times for the first 25 trials
+				<p> <code> > Output: 405.6557296799999
+				<p> dat[dat.flankers=='congruent']['rt'].mean())
+				<p> > Output: 416.0478079416664</code>
+			
 			</div>
 			<div class="image">
 				<img src="images/spotlight03.jpg" alt="" />
 			</div>
 		</section>
-
 		<!-- Five -->
+		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<h2> Plotting with Python</h2>
+
+				<p> Plotting with Python requires matplotlip which is a powerful tool to make visualizing data easier.
+				<p> <code>import matplotlib.pyplot as plt </code>
+				<p> This line is required to call in the matplotlib tool
+				<p> <code>plt.title('Distribution of RTs')
+				<p> plt.xlabel('RT')
+				<p> plt.ylabel('Count')
+				<p> plt.hist(rt, bins= 20)
+				<p> plt.show()</code>
+				<p></p>	
+				<img src="images/plot.png" width="600" height="400" alt="" />
+				
+				
+			</div>
+			<div class="image">
+				<img src="images/spotlight02.jpg" alt="" />
+			</div>
+		</section>
+		<!-- Six -->
+			<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+				id="first">
+			<div class="content">
+				<h2>Analyzing specific data</h2>
+				 When dealing with a large set of data, sometimes you need to select a specific row or column which contains the data of interest to analyze.
+				 <p></p> The following are the results of analyzing a video games dataset
+				 <p> Compare the sales in each location by genre of game.
+				 <p> <code> Genresales = df.groupby(['Genre']).sum().loc[:, 'NA_Sales':'Global_Sales']</code>
+				<p></p>
+				<img src="images/genre.jpg"  alt="" />
+				<p> The following is a comparision of Wii sales across different locations
+				<p> <code> Wiisales = df.groupby(['Platform']).sum().loc['Wii', 'NA_Sales':'Global_Sales']
+				<p>	print(Wiisales)</code>
+					<p></p>
+					<img src="images/Wii.jpg"  alt="" />
+				<p> To be even more selective, we can find the percentage of Wii sales in North America alone.
+					<p>	<code> print(Wiisales['NA_Sales']/ Wiisales['Global_Sales'] *100
+					<p> >Output: 54.78628697219202 </code>  
+					<p> Therefore 54.8% of Wii sales are in North America
+			</div>
+			<div class="image">
+				<img src="images/spotlight01.jpg" alt="" />
+			</div>
+			</section>
+		<!-- Seven -->
+		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+			<div class="content">
+				<h2> From PSTH to Heat maps</h2>
+
+				<p> For assignment 4, the goal was to analyze the neuronal activity in different contrast levels to see different spikes.
+				<p>In order to do so, I began by using PSTH; which generated a histogram representing the frequency of spike occurance at a specific contract level</p>
+				<p> <code> fig = plt.figure()
+					<p> contr= 100
+					
+					<p>cond= 'CTRL'
+					
+					<p>spike_times=df['time'][(df['contrast']== contr) & (df['condition']== cond) &  (df['spike']== 1)]
+					
+					<p>spike_count, bins = np.histogram(spike_times, bins=time_bins)
+					<p>plt.bar(bins[:-1], spike_count, width=hist_bin_width)
+					<p>plt.show()</code>
+				<p> The code above was used to generate the PSTH at 100% contrast below.
+				<img src="images/PSTH.jpg" width="600" height="400" alt="" />
+				<p> In order to get a summary across multiple contrast levels, a heat map was the method used.
+				<p> <code>  fig = plt.figure(figsize=[15,30]) 
+				<p>	subplot_counter = 1 
+					
+					<p>for cond in cond_labels:
+						<p>ax = fig.add_subplot(1, len(cond_labels), subplot_counter)
+						<p>az = plt.imshow(psth_df.loc[cond], aspect=5,interpolation='bilinear', cmap='magma', origin='lower')
+						
+						<p>plt.title(cond)
+						<p>cb = fig.colorbar(az, shrink = 0.1)
+						<p>cb.ax.set_ylabel('Number on Spikes')
+						
+						<p>xticks = range(0, len(time_bins), 10)
+						<p>plt.xticks(xticks,time_bins[xticks])
+						<p>	plt.xlabel('Time (ms)')
+					
+						<p>plt.yticks([x for x,y in enumerate(contr_labels)], [x for x in contr_labels])
+						<p>if cond == cond_labels[0]:
+							<p>plt.ylabel('Stimulus Contrast')
+					
+						<p>subplot_counter += 1
+							
+					<p>plt.show()</code>
+				<p></p>	
+				<img src="images/Heat map.jpg" width="1050" height="400" alt="" />
+				<p> The generation of the heta map is a powerful way of getting a compact summary of all your results.</p>
+				<P> Using specific colours, and interpolation allows you do clearly see the resutls across multiple contrast levels in one graph</P>
+				
+			</div>
+			<div class="image">
+				<img src="images/spotlight02.jpg" alt="" />
+			</div>
+		</section>
+		<!-- Eight -->
+		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+		id="first">
+	<div class="content">
+		<h2>Working with MRI</h2>
+		 <p> When working with an MRI, many library interfaces need to be imported first.
+		 <p><code>import imageio			
+		 <br>import scipy.ndimage as ndi
+		 <br>import scipy.stats 
+		 <br>import nibabel as nib
+		 <br>import numpy as np
+		 <br>import matplotlib.pyplot as plt
+		 </code>
+		 <p> The imageio library is used to read in a wide range of image data
+		<br><code>brain_img = imageio.imread('Anat001.20040930.2.MPRAGE_T1_SAGITTAL.0080.dcm') </code>
+		<img src="images/BrainMRI.jpg"  alt="" />
+		 <p> The following set of code is used to view the MRI image, uising the grayscale colours.
+		 <br><code>plt.imshow(brain_img, cmap='gray')
+		 <br> plt.axis('off')
+		 <br> plt.show()</code>
+
+		 <p> Furthermore, the picture can be sliced to get different views of the brain MRI.
+		 <br> <code>plt.imshow(vol[:,:,80], cmap='gray')</code>
+		 <img src="images/Brainm2.jpg"  alt="" />
+		 <p> The picture can be modified using the scipy.ndimage library for multidimensional image processing.
+			 <nr> The following set of code is used to rotate the slice that we got above.</nr>
+		 <br> <code>img = ndi.rotate(vol[:,:,80], angle=180, reshape=True)
+		 <br> plt.imshow(img, cmap='gray')</code>
+		 <img src="images/brainmrotate.jpg"  alt="" />
+		
+	</div>
+	<div class="image">
+		<img src="images/spotlight01.jpg" alt="" />
+	</div>
+	</section>
+	</ul>
+
+</section>
+		<!-- Eight -->
 		<section class="wrapper style1 align-center">
 			<div class="inner">
-				<h2>Massa sed condimentum</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit
-					amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus,
-					pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum.</p>
+				<h2>Thank you for reading my portofolio, for any comments or feedback message me down below.</h2>
+				<p></p>
 			</div>
 
 			<!-- Gallery -->
@@ -113,8 +279,8 @@
 						<img src="images/gallery/thumbs/01.jpg" alt="" />
 					</a>
 					<div class="caption">
-						<h3>Ipsum Dolor</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
+						<h3>The Power of appending and the for loop</h3>
+						<p></p>
 						<ul class="actions fixed">
 							<li><span class="button small">Details</span></li>
 						</ul>
@@ -125,8 +291,8 @@
 						<img src="images/gallery/thumbs/02.jpg" alt="" />
 					</a>
 					<div class="caption">
-						<h3>Feugiat Lorem</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
+						<h3>From an array to a dictionnary</h3>
+						<p>
 						<ul class="actions fixed">
 							<li><span class="button small">Details</span></li>
 						</ul>
@@ -137,8 +303,8 @@
 						<img src="images/gallery/thumbs/03.jpg" alt="" />
 					</a>
 					<div class="caption">
-						<h3>Magna Amet</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
+						<h3>Pandas</h3>
+						<p></p>
 						<ul class="actions fixed">
 							<li><span class="button small">Details</span></li>
 						</ul>
@@ -149,8 +315,8 @@
 						<img src="images/gallery/thumbs/04.jpg" alt="" />
 					</a>
 					<div class="caption">
-						<h3>Sed Tempus</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
+						<h3>Plotting with Python</h3>
+						<p></p>
 						<ul class="actions fixed">
 							<li><span class="button small">Details</span></li>
 						</ul>
@@ -161,103 +327,18 @@
 						<img src="images/gallery/thumbs/05.jpg" alt="" />
 					</a>
 					<div class="caption">
-						<h3>Ultrices Magna</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
+						<h3>Analyzing specific data</h3>
+						<p></p>
 						<ul class="actions fixed">
 							<li><span class="button small">Details</span></li>
 						</ul>
 					</div>
 				</article>
-				<article>
-					<a href="images/gallery/fulls/06.jpg" class="image">
-						<img src="images/gallery/thumbs/06.jpg" alt="" />
-					</a>
-					<div class="caption">
-						<h3>Sed Tempus</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-						<ul class="actions fixed">
-							<li><span class="button small">Details</span></li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<a href="images/gallery/fulls/07.jpg" class="image">
-						<img src="images/gallery/thumbs/07.jpg" alt="" />
-					</a>
-					<div class="caption">
-						<h3>Ipsum Lorem</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-						<ul class="actions fixed">
-							<li><span class="button small">Details</span></li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<a href="images/gallery/fulls/08.jpg" class="image">
-						<img src="images/gallery/thumbs/08.jpg" alt="" />
-					</a>
-					<div class="caption">
-						<h3>Magna Risus</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-						<ul class="actions fixed">
-							<li><span class="button small">Details</span></li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<a href="images/gallery/fulls/09.jpg" class="image">
-						<img src="images/gallery/thumbs/09.jpg" alt="" />
-					</a>
-					<div class="caption">
-						<h3>Tempus Dolor</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-						<ul class="actions fixed">
-							<li><span class="button small">Details</span></li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<a href="images/gallery/fulls/10.jpg" class="image">
-						<img src="images/gallery/thumbs/10.jpg" alt="" />
-					</a>
-					<div class="caption">
-						<h3>Sed Etiam</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-						<ul class="actions fixed">
-							<li><span class="button small">Details</span></li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<a href="images/gallery/fulls/11.jpg" class="image">
-						<img src="images/gallery/thumbs/11.jpg" alt="" />
-					</a>
-					<div class="caption">
-						<h3>Magna Lorem</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-						<ul class="actions fixed">
-							<li><span class="button small">Details</span></li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<a href="images/gallery/fulls/12.jpg" class="image">
-						<img src="images/gallery/thumbs/12.jpg" alt="" />
-					</a>
-					<div class="caption">
-						<h3>Ipsum Dolor</h3>
-						<p>Lorem ipsum dolor amet, consectetur magna etiam elit. Etiam sed ultrices.</p>
-						<ul class="actions fixed">
-							<li><span class="button small">Details</span></li>
-						</ul>
-					</div>
-				</article>
-			</div>
-
+				
 		</section>
 
 
-		<!-- Seven -->
+		<!-- Nine -->
 		<section class="wrapper style1 align-center">
 			<div class="inner medium">
 				<h2>Get in touch</h2>
